@@ -1,5 +1,5 @@
-import Home from './components/Home';
+import { Settings } from './components/Settings';
 
 export default function App() {
-    return <Home />;
+    return <Settings />;
 }
