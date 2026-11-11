@@ -1,37 +1,59 @@
-import { KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, View } from 'react-native';
+import {
+    KeyboardAvoidingView,
+    Platform,
+    StyleSheet,
+    Text,
+    TextInput,
+    View,
+} from 'react-native';
 import { Button } from '../button';
 
-export default function HabitoModal({ nome, setNome, adicionarHabito, fecharFormulario }) {
+export default function HabitoModal({
+    nome,
+    setNome,
+    adicionarHabito,
+    onClose,
+}) {
     return (
-    <KeyboardAvoidingView
-        style={styles.fundoPainel}
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-    >
-        <View style={styles.formulario}>
-            <Text style={styles.titulo}>Novo hábito</Text>
-            <TextInput
-                autoFocus
-                accessibilityLabel="Nome do hábito"
-                value={nome}
-                onChangeText={setNome}
-                onSubmitEditing={adicionarHabito}
-                returnKeyType="done"
-                placeholder="Ex.: Beber 2 L de água"
-                placeholderTextColor="#60776D"
-                maxLength={80}
-                style={styles.input}
-            />
-            <View style={styles.acoes}>
-                <Button text="Cancelar" onClick={fecharFormulario} />
-                <Button text="Adicionar" onClick={adicionarHabito} disabled={!nome.trim()} />
+        <KeyboardAvoidingView
+            style={styles.fundoPainel}
+            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        >
+            <View style={styles.formulario}>
+                <Text style={styles.titulo}>Novo hábito</Text>
+
+                <TextInput
+                    autoFocus
+                    accessibilityLabel="Nome do hábito"
+                    value={nome}
+                    onChangeText={setNome}
+                    onSubmitEditing={adicionarHabito}
+                    returnKeyType="done"
+                    placeholder="Ex.: Beber 2 L de água"
+                    placeholderTextColor="#60776D"
+                    maxLength={80}
+                    style={styles.input}
+                />
+
+                <View style={styles.acoes}>
+                    <Button text="Cancelar" onClick={onClose} />
+                    <Button
+                        text="Adicionar"
+                        onClick={adicionarHabito}
+                        disabled={!nome.trim()}
+                    />
+                </View>
             </View>
-        </View>
-    </KeyboardAvoidingView>
+        </KeyboardAvoidingView>
     );
 }
 
 const styles = StyleSheet.create({
-    titulo: { color: '#102E26', fontSize: 16, fontWeight: '600' },
+    titulo: {
+        color: '#102E26',
+        fontSize: 16,
+        fontWeight: '600',
+    },
     fundoPainel: {
         flex: 1,
         justifyContent: 'flex-end',
@@ -54,5 +76,9 @@ const styles = StyleSheet.create({
         color: '#102E26',
         fontSize: 16,
     },
-    acoes: { flexDirection: 'row', justifyContent: 'flex-end', gap: 8 },
+    acoes: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        gap: 8,
+    },
 });

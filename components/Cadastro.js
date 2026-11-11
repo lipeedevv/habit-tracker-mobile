@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {
+  Alert,
   KeyboardAvoidingView,
   Platform,
   Pressable,
@@ -10,6 +11,7 @@ import {
   View,
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { Button } from './button';
 
 function Campo({ rotulo, placeholder, tipo = 'nome' }) {
   const [mostrarSenha, setMostrarSenha] = useState(false);
@@ -49,6 +51,10 @@ function Campo({ rotulo, placeholder, tipo = 'nome' }) {
 }
 
 export default function Cadastro() {
+  function criarConta() {
+    Alert.alert('Cadastro', 'Tela de cadastro em desenvolvimento.');
+  }
+
   return (
     <KeyboardAvoidingView
       style={styles.tela}
@@ -72,12 +78,18 @@ export default function Cadastro() {
 
           <Campo rotulo="Nome completo" placeholder="Ex.: Felipe Sá" />
           <Campo rotulo="E-mail" placeholder="voce@email.com" tipo="email" />
-          <Campo rotulo="Senha" placeholder="Mínimo de 6 caracteres" tipo="senha" />
-          <Campo rotulo="Confirmar senha" placeholder="Repita a senha" tipo="senha" />
+          <Campo
+            rotulo="Senha"
+            placeholder="Mínimo de 6 caracteres"
+            tipo="senha"
+          />
+          <Campo
+            rotulo="Confirmar senha"
+            placeholder="Repita a senha"
+            tipo="senha"
+          />
 
-          <View style={styles.botaoCriar}>
-            <Text style={styles.textoBotao}>Criar conta</Text>
-          </View>
+          <Button text="Criar conta" onClick={criarConta} />
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
@@ -85,15 +97,50 @@ export default function Cadastro() {
 }
 
 const styles = StyleSheet.create({
-  tela: { flex: 1, backgroundColor: '#F4FAF6' },
-  conteudo: { flexGrow: 1, justifyContent: 'center', padding: 24 },
-  formulario: { width: '100%', maxWidth: 400, alignSelf: 'center' },
-  cabecalho: { alignItems: 'center', marginBottom: 34, gap: 6 },
-  marca: { color: '#287C40', fontSize: 12, fontWeight: '600', letterSpacing: 1.4 },
-  titulo: { color: '#073E32', fontSize: 26, fontWeight: '700' },
-  descricao: { color: '#486359', textAlign: 'center', fontSize: 14 },
-  campo: { marginBottom: 20, gap: 4 },
-  rotulo: { color: '#102E26', fontSize: 14, fontWeight: '600' },
+  tela: {
+    flex: 1,
+    backgroundColor: '#F4FAF6',
+  },
+  conteudo: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    padding: 24,
+  },
+  formulario: {
+    width: '100%',
+    maxWidth: 400,
+    alignSelf: 'center',
+  },
+  cabecalho: {
+    alignItems: 'center',
+    marginBottom: 34,
+    gap: 6,
+  },
+  marca: {
+    color: '#287C40',
+    fontSize: 12,
+    fontWeight: '600',
+    letterSpacing: 1.4,
+  },
+  titulo: {
+    color: '#073E32',
+    fontSize: 26,
+    fontWeight: '700',
+  },
+  descricao: {
+    color: '#486359',
+    textAlign: 'center',
+    fontSize: 14,
+  },
+  campo: {
+    marginBottom: 20,
+    gap: 4,
+  },
+  rotulo: {
+    color: '#102E26',
+    fontSize: 14,
+    fontWeight: '600',
+  },
   caixa: {
     minHeight: 50,
     borderWidth: 1,
@@ -102,15 +149,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  input: { flex: 1, minHeight: 50, paddingHorizontal: 16, fontSize: 16, color: '#102E26' },
-  botaoSenha: { minHeight: 48, justifyContent: 'center', paddingHorizontal: 12 },
-  acaoSenha: { color: '#287C40', fontWeight: '600' },
-  botaoCriar: {
-    minHeight: 56,
-    borderRadius: 18,
-    backgroundColor: '#43BB61',
-    justifyContent: 'center',
-    alignItems: 'center',
+  input: {
+    flex: 1,
+    minHeight: 50,
+    paddingHorizontal: 16,
+    fontSize: 16,
+    color: '#102E26',
   },
-  textoBotao: { color: '#102E26', fontSize: 16, fontWeight: '600' },
+  botaoSenha: {
+    minHeight: 48,
+    justifyContent: 'center',
+    paddingHorizontal: 12,
+  },
+  acaoSenha: {
+    color: '#287C40',
+    fontWeight: '600',
+  },
 });

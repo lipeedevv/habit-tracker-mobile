@@ -144,7 +144,7 @@ export default function Home() {
                     nome={nome}
                     setNome={setNome}
                     adicionarHabito={adicionarHabito}
-                    fecharFormulario={fecharFormulario}
+                    onClose={fecharFormulario}
                 />
             </Modal>
         </View>
